@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071522"><title>HARSH WINTERS — Сообщество</title>
+<style>
+:root{--bg:#071522;--panel:rgba(15,37,55,.78);--line:#a9dfff26;--ice:#a9e6ff;--muted:#9db5c6;--white:#eff9ff;--blue:#55bce9;--green:#8ee8b2;--red:#ff9c9c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--white);font:15px/1.55 Inter,system-ui,Segoe UI,sans-serif;background:radial-gradient(ellipse at 15% 0%,#16425c 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#12324a 0,transparent 35%),var(--bg);min-height:100vh}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:#06131fe8;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:.1em}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(140deg,#d6f7ff,#4b9fc8);color:#062033;display:grid;place-items:center;font-size:21px}
+nav{display:flex;gap:22px;color:var(--muted);font-size:14px}nav a:hover{color:var(--ice)}.nav-right{display:flex;align-items:center;gap:10px}
+.btn{border:1px solid var(--line);background:#ffffff09;color:var(--white);padding:10px 15px;border-radius:12px;font-weight:750;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-1px);border-color:#9ddfff88}.btn.primary{background:linear-gradient(135deg,#c5f1ff,#56b4df);color:#062033;border:0}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+main{padding:48px 0 70px}.hero{padding:48px 0 35px;display:flex;align-items:center;justify-content:space-between;gap:25px}.eyebrow,.tag{color:var(--ice);font-size:12px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}.hero h1{font-size:clamp(42px,7vw,76px);line-height:.98;letter-spacing:-.06em;margin:13px 0}.hero h1 span{color:var(--ice)}.hero p{max-width:620px;color:#b5cbd9;font-size:17px}.snowflake{font-size:125px;color:#a9e6ff77;text-shadow:0 0 50px #55bce966}
+.statusline{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:13px}.dot{width:8px;height:8px;border-radius:50%;background:#e8bb69}.dot.online{background:var(--green);box-shadow:0 0 12px var(--green)}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:32px 0 17px}.section-title h2{font-size:30px;letter-spacing:-.04em;margin:4px 0}.muted{color:var(--muted)}.panel,.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(15px);padding:21px}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:13px;color:var(--muted)}input,textarea{width:100%;border:1px solid var(--line);background:#06131f;color:var(--white);border-radius:11px;padding:12px 13px;outline:none}input:focus,textarea:focus{border-color:#79d6ff}textarea{resize:vertical;min-height:105px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.hidden{display:none!important}.msg{font-size:13px;margin-top:10px;color:var(--muted);min-height:20px}.msg.error{color:var(--red)}.msg.ok{color:var(--green)}
+.userbox{display:flex;align-items:center;gap:10px}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(140deg,#d2f5ff,#418fb6);color:#082033;font-weight:900}.user-meta{font-size:13px}.user-meta small{display:block;color:var(--muted)}
+.news-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.news-item h3{margin:8px 0}.news-item p{color:#b7cbd8;white-space:pre-wrap;overflow-wrap:anywhere}.news-meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}.empty{padding:30px;text-align:center;color:var(--muted);grid-column:1/-1}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:13px}
+#authPanel{max-width:520px;margin:25px auto}.tabs{display:flex;gap:8px;margin-bottom:15px}.tabs .btn.active{background:#b6eaff;color:#062033}
+@media(max-width:760px){nav{display:none}.hero{padding-top:25px}.snowflake{font-size:70px}.grid{grid-template-columns:1fr}.news-list{grid-template-columns:1fr}.section-title{align-items:start;flex-direction:column}.nav{height:64px}.brand{font-size:13px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#"><span class="logo">❄</span> HARSH WINTERS</a>
+<nav><a href="#news">Новости</a><a href="#publish">Публикация</a><a href="#about">О сервере</a></nav>
+<div class="nav-right"><div id="userBox" class="userbox hidden"><div class="avatar" id="avatar">?</div><div class="user-meta"><b id="navName">Игрок</b><small id="navRole">Участник</small></div><button class="btn" id="logoutBtn">Выйти</button></div><button class="btn primary" id="openAuth">Войти</button></div>
+</div></header>
+<main class="wrap">
+<section class="hero"><div><div class="eyebrow">❄ Minecraft • Survival • 1.0.0</div><h1>ЗИМА.<br><span>ВЫЖИВАНИЕ.</span></h1><p>Наш общий мир на сборке Harsh Winters 1.0.0. Публикуй новости, следи за обновлениями и готовься к приключениям вместе с друзьями.</p><div class="statusline"><span class="dot" id="serverDot"></span><span id="serverStatus">Статус сервера: адрес ещё не настроен</span></div></div><div class="snowflake">❄</div></section>
+<section id="news"><div class="section-title"><div><div class="tag">Сообщество</div><h2>Новости сервера</h2></div><button class="btn" id="refreshNews">↻ Обновить</button></div><div class="news-list" id="newsList"><div class="empty">Загружаем новости…</div></div></section>
+<section id="publish"><div class="section-title"><div><div class="tag">Твоя очередь</div><h2>Опубликовать новость</h2><p class="muted">Публиковать могут вошедшие в аккаунт участники.</p></div></div>
+<div class="panel"><div id="publishLocked" class="muted">Чтобы написать новость, сначала войди или зарегистрируйся.</div><form id="newsForm" class="hidden"><div class="field"><label for="newsTitle">Заголовок</label><input id="newsTitle" maxlength="90" required placeholder="Например: Скоро открытие сервера"></div><div class="field"><label for="newsBody">Текст новости</label><textarea id="newsBody" maxlength="3000" required placeholder="Расскажи, что нового…"></textarea></div><button class="btn primary" type="submit" id="publishBtn">Опубликовать</button><div class="msg" id="publishMsg"></div></form></div>
+</section>
+<section id="about"><div class="section-title"><div><div class="tag">Информация</div><h2>HARSH WINTERS</h2></div></div><div class="grid"><div class="panel"><h3>❄ Сборка Harsh Winters 1.0.0</h3><p class="muted">Здесь будет наш зимний survival-мир. Установи ту же версию сборки, что и остальные игроки.</p></div><div class="panel"><h3>🌐 Адрес сервера</h3><p class="muted">IP пока не указан. Добавим его, когда сервер будет готов.</p></div></div></section>
+<section id="authPanel" class="panel hidden"><div class="section-title"><div><div class="tag">Аккаунт игрока</div><h2 id="authHeading">Вход</h2></div><button class="btn" id="closeAuth">✕</button></div><div class="tabs"><button class="btn active" id="loginTab">Вход</button><button class="btn" id="registerTab">Регистрация</button></div>
+<form id="authForm"><div class="field" id="usernameField"><label for="username">Игровой ник</label><input id="username" maxlength="16" autocomplete="nickname" placeholder="Например, SnowFox"></div><div class="field"><label for="email">Электронная почта</label><input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></div><div class="field"><label for="password">Пароль</label><input id="password" type="password" minlength="8" required autocomplete="current-password" placeholder="Минимум 8 символов"></div><button class="btn primary" id="authSubmit" type="submit">Войти</button><div class="msg" id="authMsg"></div></form></section>
+</main><footer><div class="wrap">© 2026 HARSH WINTERS · Minecraft community</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/*
+  1) Вставь URL и anon key своего проекта Supabase ниже.
+  2) Выполни SQL из файла harsh_winters_supabase.sql в Supabase → SQL Editor.
+  anon key можно использовать в браузере при включённом RLS. НИКОГДА не вставляй service_role key.
+*/
+const SUPABASE_URL = "ВСТАВЬ_SUPABASE_PROJECT_URL";
+const SUPABASE_ANON_KEY = "ВСТАВЬ_SUPABASE_ANON_KEY";
+const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("ВСТАВЬ") && SUPABASE_ANON_KEY.length > 30 && !SUPABASE_ANON_KEY.includes("ВСТАВЬ");
+const db = configured && window.supabase ? window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY) : null;
+let mode="login", currentUser=null, currentProfile=null;
+const $=id=>document.getElementById(id);
+function message(id,text,type=""){const el=$(id);el.textContent=text;el.className="msg "+type}
+function showAuth(){ $("authPanel").classList.remove("hidden");$("authPanel").scrollIntoView({behavior:"smooth"}); }
+function setMode(next){mode=next;$("authHeading").textContent=next==="login"?"Вход":"Регистрация";$("authSubmit").textContent=next==="login"?"Войти":"Создать аккаунт";$("usernameField").classList.toggle("hidden",next==="login");$("loginTab").classList.toggle("active",next==="login");$("registerTab").classList.toggle("active",next==="register");$("password").autocomplete=next==="login"?"current-password":"new-password";message("authMsg","");}
+$("openAuth").onclick=showAuth;$("closeAuth").onclick=()=>$("authPanel").classList.add("hidden");$("loginTab").onclick=()=>setMode("login");$("registerTab").onclick=()=>setMode("register");
+function renderSession(user,profile){currentUser=user;currentProfile=profile;$("openAuth").classList.toggle("hidden",!!user);$("userBox").classList.toggle("hidden",!user);$("publishLocked").classList.toggle("hidden",!!user);$("newsForm").classList.toggle("hidden",!user);if(user){let nick=profile?.username||user.email?.split("@")[0]||"Игрок";$("navName").textContent=nick;$("avatar").textContent=nick.slice(0,1).toUpperCase();$("navRole").textContent=profile?.role==="admin"?"Администратор":"Участник";}}
+async function loadProfile(user){const {data,error}=await db.from("profiles").select("username,role").eq("id",user.id).maybeSingle();if(error)console.warn(error);return data}
+async function loadNews(){if(!db){$("newsList").innerHTML='<div class="empty">Подключи Supabase, чтобы включить общую ленту новостей. Пока это только макет.</div>';return}
+ const {data,error}=await db.from("news").select("id,title,body,created_at,author_id,profiles(username)").order("created_at",{ascending:false}).limit(30);
+ if(error){$("newsList").innerHTML='<div class="empty">Не удалось загрузить новости. Проверь SQL и политики доступа в Supabase.</div>';console.error(error);return}
+ if(!data.length){$("newsList").innerHTML='<div class="empty">Пока новостей нет. Будь первым, кто опубликует объявление!</div>';return}
+ $("newsList").innerHTML=data.map(item=>{const date=new Date(item.created_at).toLocaleString("ru-RU",{dateStyle:"medium",timeStyle:"short"});const author=item.profiles?.username||"Игрок";return `<article class="card news-item"><div class="news-meta"><span>${escapeHtml(author)}</span><span>${date}</span></div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p>${currentUser&&(currentUser.id===item.author_id||currentProfile?.role==="admin")?`<button class="btn" data-delete="${item.id}">Удалить</button>`:""}</article>`}).join("");
+ $("newsList").querySelectorAll("[data-delete]").forEach(btn=>btn.onclick=()=>deleteNews(btn.dataset.delete));}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+async function deleteNews(id){if(!confirm("Удалить эту новость?"))return;const {error}=await db.from("news").delete().eq("id",id);if(error){alert("Не удалось удалить: "+error.message);return}loadNews()}
+$("refreshNews").onclick=loadNews;
+$("authForm").onsubmit=async e=>{e.preventDefault();if(!db){message("authMsg","Сначала добавь URL и anon key Supabase в код сайта.","error");return}
+ const email=$("email").value.trim(),password=$("password").value,username=$("username").value.trim();
+ $("authSubmit").disabled=true;message("authMsg","Подождите…");
+ try{if(mode==="register"){if(!/^[A-Za-z0-9_]{3,16}$/.test(username)){message("authMsg","Ник: 3–16 символов, латиница, цифры и _","error");return}
+ const {data,error}=await db.auth.signUp({email,password,options:{data:{username}}});if(error)throw error;
+ if(data.session){await afterAuth(data.user);message("authMsg","Аккаунт создан!","ok")}else{message("authMsg","Проверь почту и подтверди регистрацию, затем войди.","ok")}
+ }else{const {data,error}=await db.auth.signInWithPassword({email,password});if(error)throw error;await afterAuth(data.user);$("authPanel").classList.add("hidden")}}
+ catch(err){message("authMsg",err.message||"Произошла ошибка","error")}finally{$("authSubmit").disabled=false}};
+async function afterAuth(user){const profile=await loadProfile(user);renderSession(user,profile);await loadNews()}
+$("logoutBtn").onclick=async()=>{if(db)await db.auth.signOut();renderSession(null,null);loadNews()};
+$("newsForm").onsubmit=async e=>{e.preventDefault();if(!db||!currentUser)return;const title=$("newsTitle").value.trim(),body=$("newsBody").value.trim();if(!title||!body)return;$("publishBtn").disabled=true;message("publishMsg","Публикуем…");const {error}=await db.from("news").insert({title,body,author_id:currentUser.id});$("publishBtn").disabled=false;if(error){message("publishMsg","Не удалось опубликовать: "+error.message,"error");return}$("newsTitle").value="";$("newsBody").value="";message("publishMsg","Новость опубликована!","ok");await loadNews()};
+async function init(){if(!db){renderSession(null,null);loadNews();return}const {data:{session}}=await db.auth.getSession();if(session)await afterAuth(session.user);else{renderSession(null,null);loadNews()}db.auth.onAuthStateChange(async(_event,session)=>{if(session)await afterAuth(session.user);else{renderSession(null,null);loadNews()}})}
+init();
+</script></body></html>
